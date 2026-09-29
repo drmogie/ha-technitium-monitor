@@ -1,0 +1,146 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Technitium DNS Server",
+        "description": "Enter the address of your server and an API token. Make the token in the Technitium web page: click your user name, then Create API Token.",
+        "data": {
+          "host": "Host",
+          "port": "Port",
+          "api_token": "API token",
+          "use_ssl": "Use HTTPS",
+          "verify_ssl": "Check the certificate"
+        }
+      },
+      "reauth_confirm": {
+        "title": "New API token",
+        "description": "The server did not accept the token. Enter a new one.",
+        "data": {
+          "api_token": "API token"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not reach the server. Check the host and port.",
+      "invalid_auth": "The server did not accept this token.",
+      "unknown": "Something went wrong. Check the Home Assistant log."
+    },
+    "abort": {
+      "already_configured": "This server is already added.",
+      "reauth_successful": "The token was updated."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Technitium Monitor options",
+        "description": "How often to check the server, and the time span for the numbers.",
+        "data": {
+          "scan_interval": "Check every (seconds)",
+          "period": "Time span for the numbers"
+        }
+      }
+    }
+  },
+  "selector": {
+    "period": {
+      "options": {
+        "LastHour": "Last hour",
+        "LastDay": "Last day",
+        "LastWeek": "Last week",
+        "LastMonth": "Last month"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "totalQueries": {
+        "name": "Total queries"
+      },
+      "totalBlocked": {
+        "name": "Blocked queries"
+      },
+      "blockedPercent": {
+        "name": "Blocked percent"
+      },
+      "totalCached": {
+        "name": "Cached answers"
+      },
+      "totalRecursive": {
+        "name": "Recursive answers"
+      },
+      "totalAuthoritative": {
+        "name": "Authoritative answers"
+      },
+      "totalNoError": {
+        "name": "No error answers"
+      },
+      "totalNxDomain": {
+        "name": "Not found answers"
+      },
+      "totalServerFailure": {
+        "name": "Server failures"
+      },
+      "totalRefused": {
+        "name": "Refused queries"
+      },
+      "totalDropped": {
+        "name": "Dropped queries"
+      },
+      "totalClients": {
+        "name": "Clients"
+      },
+      "zones": {
+        "name": "Zones"
+      },
+      "cachedEntries": {
+        "name": "Cache entries"
+      },
+      "blockListZones": {
+        "name": "Block list domains"
+      },
+      "allowedZones": {
+        "name": "Allowed zones"
+      },
+      "blockedZones": {
+        "name": "Blocked zones"
+      },
+      "topClient": {
+        "name": "Top client"
+      },
+      "topDomain": {
+        "name": "Top domain"
+      },
+      "topBlockedDomain": {
+        "name": "Top blocked domain"
+      },
+      "upstream": {
+        "name": "Upstream protocol"
+      },
+      "blockListNextUpdate": {
+        "name": "Block lists next update"
+      },
+      "version": {
+        "name": "Server version"
+      }
+    },
+    "binary_sensor": {
+      "blocking": {
+        "name": "Ad blocking active"
+      }
+    },
+    "switch": {
+      "blocking_switch": {
+        "name": "Ad blocking"
+      }
+    },
+    "button": {
+      "flush_cache": {
+        "name": "Flush cache"
+      },
+      "update_block_lists": {
+        "name": "Update block lists"
+      }
+    }
+  }
+}

@@ -1,0 +1,97 @@
+# Example dashboard for Technitium Monitor.
+# Entity names assume the server was added as 172.16.90.10.
+# If yours is different, replace "technitium_172_16_90_10" everywhere.
+title: Technitium DNS
+views:
+  - title: DNS
+    path: dns
+    icon: mdi:dns
+    type: sections
+    max_columns: 3
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading: Status
+            icon: mdi:shield-check
+          - type: tile
+            entity: switch.technitium_172_16_90_10_ad_blocking
+            name: Ad blocking
+            tap_action:
+              action: toggle
+          - type: tile
+            entity: sensor.technitium_172_16_90_10_server_failures
+            name: Server failures
+          - type: tile
+            entity: sensor.technitium_172_16_90_10_upstream_protocol
+            name: Upstream
+          - type: tile
+            entity: sensor.technitium_172_16_90_10_block_list_domains
+            name: Block list size
+          - type: tile
+            entity: sensor.technitium_172_16_90_10_block_lists_next_update
+            name: Lists refresh
+          - type: heading
+            heading: Actions
+            icon: mdi:gesture-tap-button
+          - type: button
+            entity: button.technitium_172_16_90_10_update_block_lists
+            name: Update block lists
+            show_state: false
+            tap_action:
+              action: toggle
+          - type: button
+            entity: button.technitium_172_16_90_10_flush_cache
+            name: Flush cache
+            show_state: false
+            tap_action:
+              action: toggle
+      - type: grid
+        cards:
+          - type: heading
+            heading: Queries
+            icon: mdi:chart-line
+          - type: gauge
+            entity: sensor.technitium_172_16_90_10_blocked_percent
+            name: Blocked
+            min: 0
+            max: 100
+            needle: false
+          - type: tile
+            entity: sensor.technitium_172_16_90_10_total_queries
+            name: Total queries
+          - type: tile
+            entity: sensor.technitium_172_16_90_10_blocked_queries
+            name: Blocked queries
+          - type: tile
+            entity: sensor.technitium_172_16_90_10_clients
+            name: Clients
+          - type: history-graph
+            title: Queries and blocked
+            hours_to_show: 24
+            entities:
+              - entity: sensor.technitium_172_16_90_10_total_queries
+              - entity: sensor.technitium_172_16_90_10_blocked_queries
+      - type: grid
+        cards:
+          - type: heading
+            heading: Top lists
+            icon: mdi:format-list-numbered
+          - type: markdown
+            title: Top clients
+            content: >-
+              {% for i in state_attr('sensor.technitium_172_16_90_10_top_client', 'top') or [] %}
+              {{ loop.index }}. {{ i.name }} ({{ i.hits }})
+              {% endfor %}
+          - type: markdown
+            title: Top domains
+            content: >-
+              {% for i in state_attr('sensor.technitium_172_16_90_10_top_domain', 'top') or [] %}
+              {{ loop.index }}. {{ i.name }} ({{ i.hits }})
+              {% endfor %}
+          - type: markdown
+            title: Top blocked domains
+            content: >-
+              {% for i in state_attr('sensor.technitium_172_16_90_10_top_blocked_domain', 'top') or [] %}
+              {{ loop.index }}. {{ i.name }} ({{ i.hits }})
+              {% endfor %}
