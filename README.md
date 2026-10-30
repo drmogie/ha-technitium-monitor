@@ -57,8 +57,8 @@ Settings, Devices and services, Technitium Monitor, **Configure**.
 `dashboards/technitium-monitor.yaml` is a ready dashboard.
 Open your dashboard, three dots, **Raw configuration editor**, and paste
 the views in. Or make a new dashboard and paste the whole file.
-It assumes the server was added as `172.16.90.10`. If yours is different,
-replace `technitium_172_16_90_10` in the file.
+It assumes the server was added as `192.168.1.10`. If yours is different,
+replace `technitium_192_168_1_10` in the file.
 
 ## Good to know
 
